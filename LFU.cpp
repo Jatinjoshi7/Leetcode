@@ -47,6 +47,3 @@ public:
         minFreq = 1;
     }
 };
-
-
-
