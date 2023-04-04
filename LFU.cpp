@@ -3,7 +3,7 @@ class LFUCache {
     int minFreq;
     unordered_map<int,pair<int,int>> keyVal;
     unordered_map<int,list<int>> freqList;
-    unordered_map<int,list<int>::iterator> pos;
+    unordered_map<int,list<int>::iterator> pos ;
 public:
     LFUCache(int capacity) {
         this->capacity = capacity;
