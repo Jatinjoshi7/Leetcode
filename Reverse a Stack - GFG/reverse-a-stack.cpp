@@ -10,8 +10,22 @@ using namespace std;
 
 class Solution{
 public:
-    void Reverse(stack<int> &st){
-        vector<int>v;
+void insertatbottom(stack<int> &st, int element){
+    if(st.empty()){
+        st.push(element);
+        return;
+    }
+    int num = st.top();
+    st.pop();
+    insertatbottom(st , element);
+    st.push(num);
+}
+
+void Reverse(stack<int> &st){
+        if(st.empty()){
+        return;
+        }
+        /*vector<int>v;
         while(!st.empty()){
             int num = st.top();
             v.push_back(num);
@@ -19,7 +33,11 @@ public:
         }
         for(auto it : v){
             st.push(it);
-        }
+        }*/
+        int num = st.top();
+        st.pop();
+        Reverse(st);
+        insertatbottom(st, num);
     }
 };
 
