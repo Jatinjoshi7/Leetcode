@@ -17,56 +17,40 @@ public :
 */
 
 class Solution{
-    stack<int> s;
-    int mini;
+    stack<int> st,mini;
+    
     public:
        /*returns min element from stack*/
        int getMin(){
-           if(s.empty()){
+           if(mini.empty()){
                return -1;
            }
            else{
-               return mini;
+               return mini.top();
            }
        }
        
        /*returns popped element from stack*/
        int pop(){
           
-           if(s.empty()){
+           if(st.empty()){
                return -1;
            }
+           int curr = st.top();
+           st.pop();
            
-           int curr = s.top();
-           s.pop();
-           
-           if(curr > mini){
-                return curr;
+           if(curr == mini.top()){
+                mini.pop();
            }
-           else{
-               int prevmini = mini;
-               int val = 2*mini - curr;
-               mini = val;
-               return prevmini;
-           }
+           return curr;
        }
        
        /*push element x into the stack*/
        void push(int x){
-           
-           if(s.empty()){
-               s.push(x);
-               mini = x;
-           }
-           else{
-               if(x < mini){
-                   s.push(2*x - mini);
-                   mini = x;
-               }
-               else{
-                   s.push(x);
-               }
-           }
+          st.push(x);
+          if(mini.empty() || mini.top() >= x){
+              mini.push(x);
+          }
        }
 };
 
